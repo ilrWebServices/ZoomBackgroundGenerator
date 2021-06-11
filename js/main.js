@@ -1,5 +1,5 @@
 let canvas, canvashd, ctxorig, ctxhd, $createimage, $optionHD, $option43, $imgs,
-    $first, $last, $pronouns, $radialParm, $optionSimple, $option75, $optionGradient, $optionTextured;
+    $first, $last, $pronouns, $radialParm;
 
 // Initialize variable references and load assets
 function init () {
@@ -13,12 +13,6 @@ function init () {
   $optionHD = document.getElementById("optionHD");
   $option43 = document.getElementById("option43");
 
-  $optionSimple = document.getElementById("optionSimple");
-  $option75 = document.getElementById("option75");
-
-  $optionGradient = document.getElementById("optionGradient");
-  $optionTextured = document.getElementById("optionTextured");
-
   $imgs = document.getElementById("imgs");
 
   $first =document.getElementById("first");
@@ -26,10 +20,6 @@ function init () {
   $pronouns = document.getElementById("pronouns");
 
   $bgImages = {
-    bgImgHD: document.getElementById("bgImgHD"),
-    bgImg43: document.getElementById("bgImg43"),
-    bgImgHD75: document.getElementById("bgImgHD75"),
-    bgImg4375: document.getElementById("bgImg4375"),
     grad_bgImgHD: document.getElementById("grad_bgImgHD"),
     grad_bgImg43: document.getElementById("grad_bgImg43"),
     grad_bgImgHD75: document.getElementById("grad_bgImgHD75"),
@@ -60,9 +50,9 @@ function init () {
 
 function setActiveImg() {
   let key = '';
-  key = ($optionGradient.checked) ? 'grad_' : key;
+  key = 'grad_' + key;
   key = ($optionHD.checked) ? key + 'bgImgHD' : key + 'bgImg43';
-  key = ($option75.checked) ? key + '75' : key;
+  //key = ($option75.checked) ? key + '75' : key;
   $activeImg = $bgImages[key];
   return true;
 }
@@ -108,10 +98,6 @@ function bind () {
   $pronouns.oninput = update;
   $option43.oninput = update;
   $optionHD.oninput = update;
-  $optionSimple.oninput = update;
-  $option75.oninput = update;
-  $optionGradient.oninput = update;
-  $optionTextured.oninput = update;
 }
 
 function draw(ctx, w, h) {
